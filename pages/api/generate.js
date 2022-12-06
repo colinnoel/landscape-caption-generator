@@ -15,14 +15,12 @@ export default async function (req, res) {
 }
 
 function generatePrompt(animal) {
-  const capitalizedAnimal =
-    animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Suggest three names for an animal that is a superhero.
+  const lowercaseAnimal = animal.toLowerCase();
+  return `Given a landscape description, suggest two unique picture captions that someone can use for a social media post.
 
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: ${capitalizedAnimal}
-Names:`;
+Landscape Description: River flowing from mountains
+Captions: Picturesque river gliding down from mountain lakes, Sparkling mountain water in the shadow of its creator
+Landscape Description: ${lowercaseAnimal}
+Captions:`;
 }
+
