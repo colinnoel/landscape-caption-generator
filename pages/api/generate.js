@@ -7,10 +7,18 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
+  const { animal, temperature } = req.body;
+
+  // Limit the length of the landscape description to 100 characters.
+  const landscapeDescription = animal.substring(0, 100);
+
+  // Generate the prompt for the language model using the limited landscape description.
+  const prompt = generatePrompt(landscapeDescription);
+
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
-    prompt: generatePrompt(req.body.animal),
-    temperature: 0.6,
+    prompt,
+    temperature,
   });
   res.status(200).json({ result: completion.data.choices[0].text });
 }
