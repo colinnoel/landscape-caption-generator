@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
+import temperatureStyles from "./styles.module.css"; // Import the temperature styles
 
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
@@ -49,7 +50,10 @@ export default function Home() {
             value={animalInput}
             onChange={(e) => setAnimalInput(e.target.value)}
           />
-          <input type="number" min="0" max="1" step="0.1" value={temperature} onChange={(e) => setTemperature(e.target.value)} />
+          <br />
+          <input type="number" min="0" max="1" step="0.1" value={temperature} onChange={(e) => setTemperature(e.target.value)} 
+          className={temperatureStyles.temperatureInput} />
+          <br />
           <input type="submit" value="Generate captions" />
         </form>
         <div className={styles.result}>{result}</div>
