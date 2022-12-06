@@ -8,17 +8,25 @@ export default function Home() {
 
   async function onSubmit(event) {
     event.preventDefault();
+  
+    // Limit the length of the landscape description to 100 characters.
+    const landscapeDescription = animalInput.substring(0, 100);
+  
+    // Generate the prompt for the language model using the limited landscape description.
+    const prompt = generatePrompt(landscapeDescription);
+  
     const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ animal: animalInput }),
+      body: JSON.stringify({ prompt }),
     });
     const data = await response.json();
     setResult(data.result);
     setAnimalInput("");
   }
+  
 
   return (
     <div>
