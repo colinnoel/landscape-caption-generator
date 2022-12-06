@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
-import temperatureStyles from "./styles.module.css"; // Import the temperature styles
+import temperatureStyles from "./index.module.css"; // Import the temperature styles
 
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
