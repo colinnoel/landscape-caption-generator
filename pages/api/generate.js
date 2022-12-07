@@ -7,7 +7,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
-  const { animal, temperature } = req.body;
+  const { animal = "", temperature } = req.body;
 
   if (req.body.animal) { // Check if req.body.animal exists
     // Limit the length of the landscape description to 1000 characters.
