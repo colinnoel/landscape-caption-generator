@@ -24,7 +24,7 @@ export default function Home() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        prompt,
+        animal: animalInput, // Include the animal in the request body
         temperature, // Include the temperature in the request body
       }),
     });
