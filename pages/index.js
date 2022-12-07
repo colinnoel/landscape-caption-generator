@@ -12,8 +12,8 @@ export default function Home() {
   async function onSubmit(event) {
     event.preventDefault();
 
-    // Limit the length of the landscape description to 100 characters.
-    const landscapeDescription = animalInput.substring(0, 100);
+    // Limit the length of the landscape description to 1000 characters.
+    const landscapeDescription = animalInput.substring(0, 1000);
 
     // Generate the prompt for the language model using the limited landscape description.
     const prompt = generatePrompt(landscapeDescription);

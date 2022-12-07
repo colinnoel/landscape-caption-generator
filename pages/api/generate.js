@@ -11,8 +11,8 @@ export default async function (req, res) {
 
   let landscapeDescription;
   if (animal && animal.length > 0) {
-    // Limit the length of the landscape description to 100 characters.
-    landscapeDescription = animal.substring(0, 100);
+    // Limit the length of the landscape description to 1000 characters.
+    landscapeDescription = animal.substring(0, 1000);
 
     // Generate the prompt for the language model using the limited landscape description.
     const prompt = generatePrompt(landscapeDescription);
@@ -30,7 +30,7 @@ export default async function (req, res) {
 
 export function generatePrompt(animal) {
   const lowercaseAnimal = animal.toLowerCase();
-  return `Given a landscape description, suggest two unique picture captions that someone can use for a social media post.
+  return `Given a landscape description, suggest two unique picture captions.
 
 Landscape Description: River flowing from mountains
 Captions: Picturesque river gliding down from mountain lakes, Sparkling mountain water in the shadow of its creator
