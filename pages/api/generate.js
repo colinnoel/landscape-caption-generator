@@ -28,7 +28,7 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(animal) {
+export function generatePrompt(animal) {
   const lowercaseAnimal = animal.toLowerCase();
   return `Given a landscape description, suggest two unique picture captions that someone can use for a social media post.
 
