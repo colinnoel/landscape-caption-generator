@@ -1,5 +1,4 @@
 import { Configuration, OpenAIApi } from "openai";
-import generatePrompt from "./index.js";
 
 const apiKey = process.env.OPENAI_API_KEY;
 const configuration = new Configuration({
