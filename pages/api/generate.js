@@ -9,8 +9,7 @@ const openai = new OpenAIApi(configuration);
 export default async function (req, res) {
   const { animal, temperature } = req.body;
 
-  let landscapeDescription;
-  if (animal && animal.length > 0) {
+  if (req.body.animal) { // Check if req.body.animal exists
     // Limit the length of the landscape description to 1000 characters.
     landscapeDescription = animal.substring(0, 1000);
 
@@ -27,6 +26,7 @@ export default async function (req, res) {
     res.status(400).json({ error: "Please provide a landscape description." });
   }
 }
+
 
 export function generatePrompt(animal) {
   const lowercaseAnimal = animal.toLowerCase();
