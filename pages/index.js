@@ -1,32 +1,19 @@
 import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
-import temperatureStyles from "./temperature-input.module.css";
-import generatePrompt from "./api/generate.js";
 
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
-  const [temperature, setTemperature] = useState(0.6); // Default temperature value
   const [result, setResult] = useState();
 
   async function onSubmit(event) {
     event.preventDefault();
-
-    // Limit the length of the landscape description to 1000 characters.
-    const landscapeDescription = animalInput.substring(0, 1000);
-
-    // Generate the prompt for the language model using the limited landscape description.
-    const prompt = generatePrompt(landscapeDescription);
-
     const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        prompt,
-        temperature, // Include the temperature in the request body
-      }),
+      body: JSON.stringify({ animal: animalInput }),
     });
     const data = await response.json();
     setResult(data.result);
@@ -51,10 +38,6 @@ export default function Home() {
             value={animalInput}
             onChange={(e) => setAnimalInput(e.target.value)}
           />
-          <br />
-          <input type="number" min="0" max="1" step="0.1" value={temperature} onChange={(e) => setTemperature(e.target.value)} 
-          className={temperatureStyles.temperatureInput} />
-          <br />
           <input type="submit" value="Generate captions" />
         </form>
         <div className={styles.result}>{result}</div>
